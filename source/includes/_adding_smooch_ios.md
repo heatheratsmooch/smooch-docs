@@ -68,7 +68,7 @@ If you're writing an app using Swift, then you'll need to import this header int
 
 ## Add Required Keys in your app's Info.plist
 
-The Smooch SDK allows users to send images to you. To support this feature, you must provide a description in your app's Info.plist to explain why access to the camera and photo library is required.
+The Smooch SDK allows users to send images to you. To support this feature, you must provide a description in your app's Info.plist to explain why access to the camera and photo library is required. These descriptions will be displayed as part of the alert when the system prompts the user to allow access. The keys are:
 
 * NSCameraUsageDescription: describes the reason your app access the camera. More information available [here](https://developer.apple.com/library/content/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html#//apple_ref/doc/uid/TP40009251-SW24)
 * NSPhotoLibraryUsageDescription: describes the reason your app accesses the photo library. More information available [here](https://developer.apple.com/library/content/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html#//apple_ref/doc/uid/TP40009251-SW17)
