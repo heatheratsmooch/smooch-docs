@@ -80,6 +80,10 @@ includes:
   - customization/embedded_js
   - customization/string_customization_js
   - customization/sound_notification_js
+<<<<<<< HEAD
+=======
+  - customization/email_capture_js
+>>>>>>> be1dba7... add base gatsby files
   - customization/styling_conversations_js
 
 search: true

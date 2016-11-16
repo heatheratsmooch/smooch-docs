@@ -58,7 +58,11 @@ Email attachments sent by the user will either be rendered in your business syst
 
 Images sent to the user will be embedded in the email as html images.
 
+<<<<<<< HEAD
 ### Receiving whispers
+=======
+### Whispers
+>>>>>>> be1dba7... add base gatsby files
 
 Whispers sent to email will contain a footer with an unsubscribe link. Like so:
 
