@@ -5,7 +5,6 @@ layout: two-column
 ---
 
 # Overview of Smooch
-asdasda
 # API Quick Start
 ## Introduction
 This quickstart will teach you to use Smooch's REST API, a Web messenger widget on a Website, and and some server-side code to create an auto response for when people send your business messages.
