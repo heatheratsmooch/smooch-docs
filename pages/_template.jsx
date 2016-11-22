@@ -4,6 +4,7 @@ import 'styles/markdown-styles';
 import 'styles/main';
 
 import { config } from 'config';
+import { SITE_ROOT } from '../utils/navigation';
 import SiteNav from '../components/SiteNav';
 import DocsNav from '../components/DocsNav';
 
@@ -40,9 +41,8 @@ export default class extends Component {
             lang: 'en'
         };
 
-        // TODO : change this once going to production
         const base = {
-            href: process.env.NODE_ENV === 'production' ? 'http://docs.smooch.io.s3-website-us-east-1.amazonaws.com' : '/'
+            href: `${SITE_ROOT}/`
         };
 
         const meta = [{

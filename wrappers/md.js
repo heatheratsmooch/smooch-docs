@@ -5,6 +5,7 @@ import hljs from 'highlight.js';
 
 import TwoColumnLayout from '../components/TwoColumnLayout';
 import ThreeColumnLayout from '../components/ThreeColumnLayout';
+import { SITE_ROOT } from '../utils/navigation';
 
 export default class extends Component {
     componentDidMount() {
@@ -26,7 +27,7 @@ export default class extends Component {
                 break;
         }
 
-        const path = process.env.NODE_ENV === 'production' ? `https://docs.smooch.io${route.path}` : route.path;
+        const path = `${SITE_ROOT}${route.path}`;
 
         const meta = [{
             property: 'og:title',
