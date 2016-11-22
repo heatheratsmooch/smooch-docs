@@ -5,7 +5,6 @@ import hljs from 'highlight.js';
 
 import TwoColumnLayout from '../components/TwoColumnLayout';
 import ThreeColumnLayout from '../components/ThreeColumnLayout';
-import { prefixLink } from 'gatsby-helpers';
 
 export default class extends Component {
     static propTypes = {
@@ -31,20 +30,20 @@ export default class extends Component {
                 break;
         }
 
+        const path = process.env.NODE_ENV === 'production' ? `https://docs.smooch.io${route.path}` : route.path;
+
         const meta = [{
             property: 'og:title',
             content: data.title
         }, {
             property: 'og:url',
-            content: prefixLink(route.path)
+            content: path
         }];
 
         const link = [{
             rel: 'canonical',
-            href: prefixLink(route.path)
+            href: path
         }];
-
-
 
         return <div className='markdown'>
                    <Helmet title={ data.title }

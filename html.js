@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
-import { prefixLink } from 'gatsby-helpers';
 
 const BUILD_TIME = new Date().getTime();
 
@@ -32,7 +31,8 @@ export default class extends Component {
                <body>
                    <div id='react-mount'
                         dangerouslySetInnerHTML={ { __html: this.props.body } } />
-                   <script src={ prefixLink(`/bundle.js?t=${BUILD_TIME}`) } />
+                   <script preload
+                           src={ `/bundle.js?t=${BUILD_TIME}` } />
                </body>
                </html>;
     }

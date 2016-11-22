@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import Helmet from 'react-helmet';
-import { prefixLink } from 'gatsby-helpers';
 import 'styles/markdown-styles';
 import 'styles/main';
 
@@ -42,7 +41,7 @@ export default class extends Component {
         };
 
         const base = {
-            href: prefixLink('/')
+            href: process.env.NODE_ENV === 'production' ? 'https://docs.smooch.io' : '/'
         };
 
         const meta = [{

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import { prefixLink } from 'gatsby-helpers';
 
 import { generateNavStructure } from '../utils/navigation';
 
@@ -21,7 +20,7 @@ export default class extends Component {
                                                   { section.pages.map(({path, title}) => {
                                                         return <li key={ path }
                                                                    className='sidebar-section-title'>
-                                                                   <Link to={ prefixLink(path) }>
+                                                                   <Link to={ path }>
                                                                    { title }
                                                                    </Link>
                                                                </li>;
