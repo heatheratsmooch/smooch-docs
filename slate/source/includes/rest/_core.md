@@ -1238,17 +1238,11 @@ Notify Smooch when an app maker starts or stops typing a response.
 |------------------------------|-----------------------|
 | **role**<br/><span class='req'>required</span>       | The role of the actor. Must be `appMaker`. |
 | **type**<br/><span class='req'>required</span>       | The type of activity to trigger. Must be either `typing:start` or `typing:stop` |
-<<<<<<< HEAD
 | **name**<br/><span class='opt'>optional</span>      | The name of the app maker that starts or stops typing a response |
 | **avatarUrl**<br/><span class='opt'>optional</span>      | The avatar URL of the app maker that starts typing a response |
 
 <aside class="notice">
 Typing activity is only supported on our Web Messenger, Facebook Messenger and Telegram
-=======
-
-<aside class="notice">
-Typing activity is only supported on Messenger and Telegram
->>>>>>> be1dba7... add base gatsby files
 </aside>
 
 ## Post Message
