@@ -119,7 +119,6 @@ export default class extends Component {
         }];
 
         const script = [{
-            type: 'application/javascript',
             innerHTML: `
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -127,6 +126,7 @@ export default class extends Component {
         	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
         	ga('create', 'UA-47399515-1', 'auto');
+            ga('require', 'urlChangeTracker');
             ga('send', 'pageview');
             `
         }];

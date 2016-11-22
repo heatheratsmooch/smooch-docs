@@ -4,6 +4,7 @@
   "version": "2.0.0",
   "author": "Marc-Antoine Lemieux <marc@smooch.io>",
   "dependencies": {
+    "autotrack": "^1.0.3",
     "front-matter": "^2.0.7",
     "gatsby": "^0.12.19",
     "highlight.js": "^9.8.0",

@@ -1,6 +1,1 @@
-export const onRouteUpdate = ({pathname}) => {
-    if (global.ga) {
-        global.ga('set', 'page', pathname);
-        global.ga('send', 'pageview');
-    }
-};
+require('autotrack/lib/plugins/url-change-tracker');
