@@ -40,6 +40,7 @@ export default class extends Component {
             lang: 'en'
         };
 
+        // TODO : change this once going to production
         const base = {
             href: process.env.NODE_ENV === 'production' ? 'http://docs.smooch.io.s3-website-us-east-1.amazonaws.com' : '/'
         };

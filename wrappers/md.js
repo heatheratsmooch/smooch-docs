@@ -7,10 +7,6 @@ import TwoColumnLayout from '../components/TwoColumnLayout';
 import ThreeColumnLayout from '../components/ThreeColumnLayout';
 
 export default class extends Component {
-    static propTypes = {
-        router: React.PropTypes.object,
-    };
-
     componentDidMount() {
         hljs.initHighlightingOnLoad();
     }
