@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
-
 import { prefixLink } from 'gatsby-helpers';
 
 const BUILD_TIME = new Date().getTime();
@@ -18,15 +17,16 @@ export default class extends Component {
             css = <style dangerouslySetInnerHTML={ { __html: require('!raw!./public/styles.css') } } />;
         }
 
-        return <html lang='en'>
+        return <html {...head.htmlAttributes.toComponent()}>
                <head>
                    <meta charSet='utf-8' />
                    <meta httpEquiv='X-UA-Compatible'
                          content='IE=edge' />
                    <meta name='viewport'
-                         content='width=device-width, initial-scale=1.0' />
+                         content='width=device-width, initial-scale=1.0, user-scalable=no' />
                    { head.title.toComponent() }
                    { head.meta.toComponent() }
+                   { head.link.toComponent() }
                    { css }
                </head>
                <body>

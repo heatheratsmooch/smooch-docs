@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import 'highlight.js/styles/default.css';
 import Helmet from 'react-helmet';
-import { config } from 'config';
 import hljs from 'highlight.js';
+
 import TwoColumnLayout from '../components/TwoColumnLayout';
 import ThreeColumnLayout from '../components/ThreeColumnLayout';
+import { prefixLink } from 'gatsby-helpers';
 
 export default class extends Component {
     static propTypes = {
@@ -16,7 +17,8 @@ export default class extends Component {
     }
 
     render() {
-        const {layout = 'documentation', body, ...data} = this.props.route.page.data;
+        const {route} = this.props;
+        const {layout = 'two-column', body, ...data} = route.page.data;
         let Layout;
 
         switch (layout) {
@@ -29,9 +31,25 @@ export default class extends Component {
                 break;
         }
 
+        const meta = [{
+            property: 'og:title',
+            content: data.title
+        }, {
+            property: 'og:url',
+            content: prefixLink(route.path)
+        }];
+
+        const link = [{
+            rel: 'canonical',
+            href: prefixLink(route.path)
+        }];
+
+
 
         return <div className='markdown'>
-                   <Helmet title={ `${config.siteTitle} | ${data.title}` } />
+                   <Helmet title={ data.title }
+                           meta={ meta }
+                           link={ link } />
                    <Layout {...data}>
                        <div dangerouslySetInnerHTML={ { __html: body } } />
                    </Layout>

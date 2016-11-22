@@ -41,7 +41,7 @@
   "license": "MIT",
   "main": "n/a",
   "scripts": {
-    "build": "gatsby build",
+    "build": "gatsby build --prefix-links",
     "deploy": "./publish.sh",
     "develop": "gatsby develop",
     "test": "echo \"Error: no test specified\" && exit 1"

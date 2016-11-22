@@ -20,7 +20,7 @@ The API also facilitates [cross-origin resource sharing](https://en.wikipedia.or
 ```
 401 Unauthorized
 ```
-```
+```json
 {
   "error": {
     "code": "unauthorized",
@@ -87,13 +87,13 @@ Some APIs accept either of the two authentication methods while others require a
 ## App Token
 
 
-```shell
+```bash
 # Calling GET /v1/appusers using an app token
 curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f \
      -H 'app-token: cr2g6jgxrahuh68n1o3e2fcnt'
 ```
 
-```js
+```javascript
 // Initializing Smooch Core with an app token
 var smooch = new SmoochCore({
     appToken: 'cr2g6jgxrahuh68n1o3e2fcnt'
@@ -109,18 +109,18 @@ Specifying an `appToken` alone is sufficient to call any of the app user facing 
 ## JWT
 
 
-```shell
+```bash
 # Calling GET /v1/appusers using a jwt
 curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f \
      -H 'authorization: Bearer your-jwt'
 ```
-```js
+```javascript
 // Initializing Smooch Core with a jwt in the browser
 var smooch = new SmoochCore({
     jwt: 'your-jwt'
 });
 ```
-```js
+```javascript
 // Initializing Smooch Core with a jwt in Node.js
 var smooch = new SmoochCore({
     keyId: 'your-key-id',
@@ -198,7 +198,7 @@ When a webhook trigger is triggered, a JSON payload will be posted to the URL co
 
 > Request:
 
-```shell
+```bash
 curl https://api.smooch.io/v1/webhooks \
      -X POST \
      -d '{"target": "http://example.com/callback"}' \
@@ -206,7 +206,7 @@ curl https://api.smooch.io/v1/webhooks \
      -H 'authorization: Bearer your-jwt'
 ```
 
-```js
+```javascript
 smooch.webhooks.create({
     target: 'http://example.com/callback'
 }).then((response) => {
@@ -247,12 +247,12 @@ Alternatively, you can use the Webhooks integration in the Smooch dashboard to e
 
 > Request:
 
-```shell
+```bash
   curl https://api.smooch.io/v1/webhooks \
        -H 'authorization: Bearer your-jwt'
 ```
 
-```js
+```javascript
 smooch.webhooks.list().then((response) => {
     // async code
 });
@@ -286,12 +286,12 @@ List all webhooks configured for a given app.
 
 > Request:
 
-```shell
+```bash
 curl https://api.smooch.io/v1/webhooks/55c8d9758590aa1900b9b9f6 \
      -H 'authorization: Bearer your-jwt'
 ```
 
-```js
+```javascript
 smooch.webhooks.get('55c8d9758590aa1900b9b9f6').then((response) => {
     // async code
 });
@@ -323,7 +323,7 @@ Individual webhooks can be fetched using this API.
 
 > Request:
 
-```shell
+```bash
 curl https://api.smooch.io/v1/webhooks/55c8d9758590aa1900b9b9f6 \
      -X PUT \
      -d '{"target": "http://example.com/callback"}' \
@@ -331,7 +331,7 @@ curl https://api.smooch.io/v1/webhooks/55c8d9758590aa1900b9b9f6 \
      -H 'authorization: Bearer your-jwt'
 ```
 
-```js
+```javascript
 smooch.webhooks.update('55c8d9758590aa1900b9b9f6', {
     target: 'http://example.com/callback'
 }).then((response) => {
@@ -370,12 +370,12 @@ Use this API to update your existing webhooks.
 
 > Request:
 
-```shell
+```bash
 curl https://api.smooch.io/v1/webhooks/55c8d9758590aa1900b9b9f6 \
      -X DELETE \
      -H 'authorization: Bearer your-jwt'
 ```
-```js
+```javascript
 smooch.webhooks.delete('55c8d9758590aa1900b9b9f6').then(() => {
     // async code
 });
@@ -395,7 +395,7 @@ Deletes the specified webhook.
 
 > Request:
 
-```shell
+```bash
 curl https://api.smooch.io/v1/webhooks
      -X POST \
      -d '{"target": "http://example.com/callback", "triggers": ["message:appUser"]}' \
@@ -403,7 +403,7 @@ curl https://api.smooch.io/v1/webhooks
      -H 'authorization: Bearer your-jwt'
 ```
 
-```js
+```javascript
 smooch.webhooks.create({
     target: 'http://example.com/callback',
     triggers: [
@@ -599,7 +599,7 @@ If a webhook target responds with anything other than a 2xx status code, or if n
 
 > Request:
 
-```shell
+```bash
 curl https://api.smooch.io/v1/init \
      -X POST \
      -d '{"device": {"id": "03f70682b7f5b21536a3674f38b3e220", "platform": "ios", "appVersion": "1.0"}, "userId": "bob@example.com"}' \
@@ -607,7 +607,7 @@ curl https://api.smooch.io/v1/init \
      -H 'authorization: Bearer your-jwt'
 ```
 
-```js
+```javascript
 smooch.appUsers.init({
     device: {
         id: '03f70682b7f5b21536a3674f38b3e220',
@@ -740,11 +740,11 @@ If a `userId` has been specified for a given app user, it can be used in place o
 
 > Request by smoochId:
 
-```shell
+```bash
 curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f \
      -H 'app-token: cr2g6jgxrahuh68n1o3e2fcnt'
 ```
-```js
+```javascript
 smooch.appUsers.get('c7f6e6d6c3a637261bd9656f').then((response) => {
     // async code
 });
@@ -752,11 +752,11 @@ smooch.appUsers.get('c7f6e6d6c3a637261bd9656f').then((response) => {
 
 > Request by userId:
 
-```shell
+```bash
 curl https://api.smooch.io/v1/appusers/steveb@channel5.com \
      -H 'app-token: cr2g6jgxrahuh68n1o3e2fcnt'
 ```
-```js
+```javascript
 smooch.appUsers.get('steveb@channel5.com').then((response) => {
     // async code
 });
@@ -806,14 +806,14 @@ Retrieve a specific app user. Like all other `/v1/appusers/` paths, an app user 
 
 > Request:
 
-```shell
+```bash
 curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f \
      -X PUT \
      -d '{"givenName": "Steve"}' \
      -H 'content-type: application/json' \
      -H 'app-token: cr2g6jgxrahuh68n1o3e2fcnt'
 ```
-```js
+```javascript
 smooch.appUsers.update('c7f6e6d6c3a637261bd9656f', {
     givenName: 'Steve'
 }).then((response) => {
@@ -873,14 +873,14 @@ Update an app user's basic profile information and specify custom profile data v
 
 > Request:
 
-```shell
+```bash
 curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/devices/5A7F8343-DF41-46A8-96EC-8583FCB422FB \
      -X PUT \
      -d '{"appVersion": "8.0"}' \
      -H 'content-type: application/json' \
      -H 'app-token: cr2g6jgxrahuh68n1o3e2fcnt'
 ```
-```js
+```javascript
 smooch.appUsers.updateDevice('c7f6e6d6c3a637261bd9656f', '5A7F8343-DF41-46A8-96EC-8583FCB422FB', {
     appVersion: '8.0'
 }).then((response) => {
@@ -926,14 +926,14 @@ Update the properties of a device. This API is additive; only the specific field
 
 > Request:
 
-```shell
+```bash
 curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/events \
      -X POST \
      -d '{"name":"completed_sale"}' \
      -H 'content-type: application/json' \
      -H 'app-token: cr2g6jgxrahuh68n1o3e2fcnt'
 ```
-```js
+```javascript
 smooch.appUsers.trackEvent('c7f6e6d6c3a637261bd9656f', 'completed_sale').then((response) => {
     // async code
 });
@@ -962,14 +962,14 @@ Trigger an event for a given app user. Some Smooch whispers are triggered on dis
 
 > Request:
 
-```shell
+```bash
 curl https://api.smooch.io/v1/appusers \
      -X POST \
      -d '{"userId": "steveb@channel5.com", "givenName": "Steve", "properties": {"favoriteFood": "prizza"}}' \
      -H 'content-type: application/json' \
      -H 'authorization: Bearer your-jwt'
 ```
-```js
+```javascript
 smooch.appUsers.create('steveb@channel5.com', {
     givenName: 'Steve',
     properties: {
@@ -1025,14 +1025,14 @@ Unlike the other App User APIs in this section, this endpoint is not intended to
 
 > Request:
 
-```shell
+```bash
 curl https://api.smooch.io/v1/appusers/deb920657bbc3adc3fec7963/channels \
      -X POST \
      -d '{"type": "twilio", "phoneNumber": "+15145555555"}' \
      -H 'content-type: application/json' \
      -H 'authorization: Bearer your-jwt'
 ```
-```js
+```javascript
 smooch.appUsers.linkChannel('steveb@channel5.com', {
     type: 'twilio',
     phoneNumber: '+15145555555'
@@ -1099,14 +1099,14 @@ Support for Frontend Email is coming soon.
 
 > Request:
 
-```shell
+```bash
 curl https://api.smooch.io/v1/appusers/deb920657bbc3adc3fec7963/channels/twilio \
      -X DELETE \
      -d '{"type": "twilio"}' \
      -H 'content-type: application/json' \
      -H 'authorization: Bearer your-jwt'
 ```
-```js
+```javascript
 smooch.appUsers.unlinkChannel('steveb@channel5.com', 'twilio')
 .then(() => {
     // async code
@@ -1131,11 +1131,11 @@ When the first message is sent to an app user or received from an app user, a co
 
 > Request:
 
-```shell
+```bash
 curl https://api.smooch.io/v1/appUsers/c7f6e6d6c3a637261bd9656f/messages?before=1471995721 \
      -H 'app-token: cr2g6jgxrahuh68n1o3e2fcnt'
 ```
-```js
+```javascript
 smooch.appUsers.getMessages('c7f6e6d6c3a637261bd9656f', {before: '1471995721'}).then((response) => {
     // async code
 });
@@ -1185,12 +1185,12 @@ The timestamp format should be in seconds using [Unix time](https://en.wikipedia
 ## Reset Unread Count
 > Request:
 
-```shell
+```bash
 curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/conversation/read \
      -X POST \
      -H 'app-token: cr2g6jgxrahuh68n1o3e2fcnt'
 ```
-```js
+```javascript
 smooch.conversations.resetUnreadCount('c7f6e6d6c3a637261bd9656f').then(() => {
     // async code
 });
@@ -1209,14 +1209,14 @@ Reset the unread count of the conversation to 0. If the conversation has not yet
 ## Typing Activity
 > Request:
 
-```shell
+```bash
 curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/conversation/activity \
      -X POST \
      -d '{"role":"appMaker", "type": "typing:start"}' \
      -H 'content-type: application/json' \
      -H 'authorization: Bearer your-jwt'
 ```
-```js
+```javascript
 // This endpoint is not currently wrapped in a JavaScript lib
 ```
 
@@ -1251,14 +1251,14 @@ Typing activity is only supported on Messenger and Telegram
 
 > Post as app user:
 
-```shell
+```bash
 curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/messages \
      -X POST \
      -d '{"text":"Just put some vinegar on it", "role": "appUser"}' \
      -H 'content-type: application/json' \
      -H 'app-token: cr2g6jgxrahuh68n1o3e2fcnt'
 ```
-```js
+```javascript
 smooch.appUsers.sendMessage('c7f6e6d6c3a637261bd9656f', {
     text: 'Just put some vinegar on it',
     role: 'appUser'
@@ -1269,14 +1269,14 @@ smooch.appUsers.sendMessage('c7f6e6d6c3a637261bd9656f', {
 
 > Post as app maker:
 
-```shell
+```bash
 curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/messages \
      -X POST \
      -d '{"text":"Just put some vinegar on it", "role": "appMaker"}' \
      -H 'content-type: application/json' \
      -H 'authorization: Bearer your-jwt'
 ```
-```js
+```javascript
 smooch.appUsers.sendMessage('c7f6e6d6c3a637261bd9656f', {
     text: 'Just put some vinegar on it',
     role: 'appMaker'
@@ -1343,14 +1343,14 @@ There are 4 types of supported actions : **link**, **buy**, **postback**, and **
 
 > Send link action:
 
-```shell
+```bash
 curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/messages \
      -X POST \
      -d '{"text":"Just put some vinegar on it", "role": "appMaker", "actions": [{"type": "link", "text": "Put vinegar", "uri": "http://example.com" }]}' \
      -H 'content-type: application/json' \
      -H 'authorization: Bearer your-jwt'
 ```
-```js
+```javascript
 smooch.appUsers.sendMessage('c7f6e6d6c3a637261bd9656f', {
     text: 'Just put some vinegar on it',
     role: 'appMaker',
@@ -1379,14 +1379,14 @@ smooch.appUsers.sendMessage('c7f6e6d6c3a637261bd9656f', {
 
 > Send buy action:
 
-```shell
+```bash
 curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/messages \
      -X POST \
      -d '{"text":"Just put some vinegar on it", "role": "appMaker", "actions": [{"type": "buy", "text": "Buy vinegar", "amount": 1000 }]}' \
      -H 'content-type: application/json' \
      -H 'authorization: Bearer your-jwt'
 ```
-```js
+```javascript
 smooch.appUsers.sendMessage('c7f6e6d6c3a637261bd9656f', {
     text: 'Just put some vinegar on it',
     role: 'appMaker',
@@ -1416,14 +1416,14 @@ The <a href="/javascript/#stripe">Stripe integration</a> must be configured and 
 
 > Send postback action:
 
-```shell
+```bash
 curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/messages \
      -X POST \
      -d '{"text":"Just put some vinegar on it", "role": "appMaker", "actions": [{"type": "postback", "text": "Send vinegar", "payload": "buy_vinegar" }]}' \
      -H 'content-type: application/json' \
      -H 'authorization: Bearer your-jwt'
 ```
-```js
+```javascript
 smooch.appUsers.sendMessage('c7f6e6d6c3a637261bd9656f', {
     text: 'Just put some vinegar on it',
     role: 'appMaker',
@@ -1452,7 +1452,7 @@ See how to handle postback with <a href="#webhook-triggers">webhook triggers</a>
 
 > Send reply action:
 
-```shell
+```bash
 curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/messages \
      -X POST \
      -H 'content-type: application/json' \
@@ -1472,7 +1472,7 @@ curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/messages \
     }]
 }'
 ```
-```js
+```javascript
 smooch.appUsers.sendMessage('c7f6e6d6c3a637261bd9656f', {
     text: 'Which do you prefer?',
     role: 'appMaker',
@@ -1508,7 +1508,7 @@ smooch.appUsers.sendMessage('c7f6e6d6c3a637261bd9656f', {
 
 > Send reply actions with icon URLs:
 
-```shell
+```bash
 curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/messages \
      -X POST \
      -H 'content-type: application/json' \
@@ -1530,7 +1530,7 @@ curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/messages \
     }]
 }'
 ```
-```js
+```javascript
 smooch.appUsers.sendMessage('c7f6e6d6c3a637261bd9656f', {
     text: 'Which do you prefer?',
     role: 'appMaker',
@@ -1568,7 +1568,7 @@ Icons are currrently only supported on Facebook Messenger and Web Messenger.
 
 > Request:
 
-```shell
+```bash
 curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/messages \
      -X POST \
      -H 'content-type: application/json' \
@@ -1605,7 +1605,7 @@ curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/messages \
     }]
 }'
 ```
-```js
+```javascript
 smooch.appUsers.sendMessage('c7f6e6d6c3a637261bd9656f', {
     role: 'appMaker',
     items: [{
@@ -1686,7 +1686,7 @@ smooch.appUsers.sendMessage('c7f6e6d6c3a637261bd9656f', {
   }
 }
 ```
-```js
+```javascript
 201 CREATED
 ```
 
@@ -1714,7 +1714,7 @@ Carousel actions have the same structure as [action buttons](#action-buttons), h
 
 > Send share action:
 
-```shell
+```bash
 curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/messages \
      -X POST \
      -H 'content-type: application/json' \
@@ -1733,7 +1733,7 @@ curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/messages \
     }]
 }'
 ```
-```js
+```javascript
 smooch.appUsers.sendMessage('c7f6e6d6c3a637261bd9656f', {
     text: 'Title',
     role: 'appMaker',
@@ -1793,7 +1793,7 @@ Text fallback.
 
 > Request:
 
-```shell
+```bash
 curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/images \
      -X POST \
      -H 'app-token: cr2g6jgxrahuh68n1o3e2fcnt' \
@@ -1802,7 +1802,7 @@ curl https://api.smooch.io/v1/appusers/c7f6e6d6c3a637261bd9656f/images \
      -F 'role=appUser' \
      -F 'name=Steve'
 ```
-```js
+```javascript
 // Frontend version
 var file = fileInput.files[0];
 smooch.appUsers.uploadImage('c7f6e6d6c3a637261bd9656f', file,
@@ -1859,12 +1859,12 @@ Smooch provides a /v1/menu/ API to set persistent menus on messaging channels th
 
 > Request:
 
-```shell
+```bash
 curl https://api.smooch.io/v1/menu \
      -H 'content-type: application/json' \
      -H 'authorization: Bearer your-jwt'
 ```
-```js
+```javascript
 smooch.menu.get()
 .then(() => {
     // async code
@@ -1906,14 +1906,14 @@ Get the specified app's menu.
 
 > Request:
 
-```shell
+```bash
 curl https://api.smooch.io/v1/menu \
      -X PUT \
      -d '{"items": [{"type": "link", "text": "Smooch", "uri": "http://smooch.io"}]}' \
      -H 'content-type: application/json' \
      -H 'authorization: Bearer your-jwt'
 ```
-```js
+```javascript
 smooch.menu.configure({
     name: 'My Awesome Menu',
     items: [{
@@ -1970,13 +1970,13 @@ Menus contain 1 to 5 menu items.
 
 > Request:
 
-```shell
+```bash
 curl https://api.smooch.io/v1/menu \
      -X DELETE \
      -H 'content-type: application/json' \
      -H 'authorization: Bearer your-jwt'
 ```
-```js
+```javascript
 smooch.menu.remove()
 .then(() => {
     // async code

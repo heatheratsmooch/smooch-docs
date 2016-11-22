@@ -1,5 +1,5 @@
 siteTitle="Smooch Docs"
-linkPrefix = "/"
+linkPrefix = "https://docs.smooch.io"
 
 [sections.docs]
 subsections = [
