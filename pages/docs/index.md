@@ -54,10 +54,10 @@ Now we can run your server with the command `node index.js`, and visit your skel
 Now we'll add the Web Messenger to our skeleton page.
 
 1. Login to your Smooch account and in the upper right hand corner of the overview page, create a new Smooch app.
-    ![Create an app](images/create_app.png)
+    ![Create an app](/images/create_app.png)
 
 2. Now [connect the Web Messenger](https://app.smooch.io/integrations/web) from the Smooch integration marketplace.
-    ![Smooch Marketplace](images/marketplace.png)
+    ![Smooch Marketplace](/images/marketplace.png)
 
 3. After we insert the code from the integration page into our skeleton page it should look something like this, but with your own app token:
     ```html
@@ -110,7 +110,7 @@ Webhooks are HTTP requests sent from Smooch to your server whenever certain even
 3. Restart your server, and now we are logging the body of any POST request sent to your server at "/message".
 
 4. Now we'll configure the Webhook in Smooch. Visit the [integration page for Webhooks](https://app.smooch.io/integrations/webhook). When you connect the Webhooks integration, enter the ngrok url you got in step 1, and include the "/message" route. So something like https://MY-NGROK-DOMAIN.ngrok.io/message. Make sure you have selected "App User Messages" from the trigger dropdown.
-    ![Create a Webhook](images/create_webhook.png)
+    ![Create a Webhook](/images/create_webhook.png)
 
 5. Now, whenever a message is sent from a user, we log the request in the terminal where you're running your server. So let's try that, open up the page with the Web messenger and send a message as a user! If you go check in the terminal, you'll see the request body logged.
 
@@ -119,9 +119,9 @@ Webhooks are HTTP requests sent from Smooch to your server whenever certain even
 Now that we have a working server, and we're handling Webhook requests from Smooch, it's time to use the REST API to respond to the user whenever they send us a message.
 
 1. To call the API we'll need to generate a secret key for Smooch. Go to the "settings" tab on your Smooch dashboard
-    ![Smooch settings](images/settings.png)
+    ![Smooch settings](/images/settings.png)
     and generate a new key.
-    ![Create a Secret Key](images/create_secret.png)
+    ![Create a Secret Key](/images/create_secret.png)
 
 2. We'll import another npm package to make requests. We'll also need a package for generating [JSON Web Tokens](https://jwt.io/), which we'll be using to authenticate with Smooch. So let's install those packages `npm install --save request jsonwebtoken`.
 
