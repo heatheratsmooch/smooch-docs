@@ -27,6 +27,7 @@ export default class extends Component {
                    { head.meta.toComponent() }
                    { head.link.toComponent() }
                    { css }
+                   { head.script.toComponent() }
                </head>
                <body>
                    <div id='react-mount'

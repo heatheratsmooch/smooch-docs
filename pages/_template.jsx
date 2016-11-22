@@ -41,7 +41,7 @@ export default class extends Component {
         };
 
         const base = {
-            href: process.env.NODE_ENV === 'production' ? 'https://docs.smooch.io' : '/'
+            href: process.env.NODE_ENV === 'production' ? 'http://docs.smooch.io.s3-website-us-east-1.amazonaws.com' : '/'
         };
 
         const meta = [{
@@ -118,12 +118,26 @@ export default class extends Component {
             href: require('../images/android-icon-192x192.png')
         }];
 
+        const script = [{
+            type: 'application/javascript',
+            innerHTML: `
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        	ga('create', 'UA-47399515-1', 'auto');
+            ga('send', 'pageview');
+            `
+        }];
+
         return <div>
                    <Helmet htmlAttributes={ htmlAttributes }
                            titleTemplate={ `${config.siteTitle} | %s` }
                            defaultTitle='Documentation'
                            base={ base }
                            link={ link }
+                           script={ script }
                            meta={ meta } />
                    <SiteNav />
                    <DocsNav />
