@@ -8,9 +8,9 @@ export default class extends Component {
         const {section} = this.props;
         return <Grid>
                    <Row>
-                       <Col sm={ 4 }
-                            lg={ 3 }
-                            xsHidden>
+                       <Col xsHidden
+                            sm={ 4 }
+                            lg={ 3 }>
                        <Sidebar section={ section } />
                        </Col>
                        <Col xs={ 12 }
