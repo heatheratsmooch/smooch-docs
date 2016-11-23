@@ -33,7 +33,7 @@ export default class extends Component {
                                </NavItem>
                            </LinkContainer>
                            <NavItem eventKey={ 5 }
-                                    href='https://app.smooch.io/customers'>
+                                    href='https://smooch.io/customers/'>
                                Customers
                            </NavItem>
                            <NavItem eventKey={ 6 }
