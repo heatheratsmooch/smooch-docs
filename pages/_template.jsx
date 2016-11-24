@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import Helmet from 'react-helmet';
+import Script from 'react-load-script';
 import 'styles/markdown-styles';
 import 'styles/main';
 
@@ -26,6 +27,16 @@ export default class extends Component {
             }
         }
     };
+
+    onScriptLoad() {
+        global.Smooch.init({
+            appToken: 'ec1ul1os23l6kln4dzpw79uh6'
+        });
+    }
+
+    onScriptError() {
+        console.error('Couldn\'t load Smooch Web Messenger script.');
+    }
 
     componentDidMount() {
         this.scrollToHash();
@@ -144,6 +155,9 @@ export default class extends Component {
                    <SiteNav />
                    <DocsNav />
                    { this.props.children }
+                   <Script url='https://cdn.smooch.io/smooch.min.js'
+                           onError={ this.onScriptError }
+                           onLoad={ this.onScriptLoad } />
                </div>;
     }
 }

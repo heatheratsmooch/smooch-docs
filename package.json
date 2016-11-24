@@ -24,6 +24,7 @@
     "react-bootstrap": "0.30.6",
     "react-headroom": "2.1.2",
     "react-helmet": "3.2.2",
+    "react-load-script": "0.0.2",
     "react-router-bootstrap": "0.23.1",
     "sitemap": "1.8.2",
     "toml-js": "0.0.8"
