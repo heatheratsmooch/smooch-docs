@@ -6,6 +6,10 @@ layout: two-column
 
 # Changelog
 
+## December 8th, 2016
+
+- Improved API performance for very long conversations
+
 ## December 2nd, 2016
 
 - Added support for Facebook Messenger [list messages](http://docs.smooch.io/rest/#list-message)
