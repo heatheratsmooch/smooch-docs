@@ -10,7 +10,7 @@ Once you've obtained a relevant key and secret pair as described in the [JWT](/d
 
 #### Using the Smooch Core Javascript Library
 
-The easiest way to use the Smooch API is through the [Smooch Core Javascript Library](https://www.npmjs.com/package/smooch-core). This library conveniently wraps all of the Smooch API in a Javascript-friendly way, helping you get up and running rather quickly.
+The easiest way to use the Smooch API is through the [Smooch Core Javascript Library](https://www.npmjs.com/package/smooch-core). This library conveniently wraps all of the Smooch API in a Javascript-friendly way, helping you get up and running quickly.
 
 To authenticate to the API, you need only initialize the library like so:
 
@@ -23,9 +23,9 @@ var smooch = new SmoochCore({
 });
 ```
 
-You can also initialize the library to perform operations at the account level (for [managed accounts](/docs/intro-to-managed-accounts/)) or at the individual user level. Read more about how to do this in the [javascript library documentation](https://github.com/smooch/smooch-core-js)
+You can also initialize the library to perform operations at the account level (for [managed accounts](/docs/intro-to-managed-accounts/)) or at the individual user level. Read more about how to do this in the [javascript library documentation](https://github.com/smooch/smooch-core-js).
 
-#### Using a HTTP Request Header
+#### Using an HTTP Request Header
 
 If you're calling the API directly, you'll need to craft a token from the key and secret pair as described in the [JWT documentation](/docs/jwt).
 
